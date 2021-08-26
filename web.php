@@ -13,3 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//問3
+Route::get('XXX', 'AAAController@bbb');
+
+//問4
+Route::get('admin/profile/create', 'Admin\ProfileController@add');
+Route::get('admin/profile/edit', 'Admin\ProfileController@edit');
+
+?>
