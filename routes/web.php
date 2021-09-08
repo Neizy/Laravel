@@ -12,8 +12,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['prefix' => 'admin'], function() {
-    Route::get('news/create', 'Admin\NewsController@add')->middleware('auth');
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
+    Route::get('news/create', 'Admin\NewsController@add');
+    Route::post('news/create', 'Admin\NewsController@create'); # 追記
 });
 //問3
 Route::get('XXX', 'AAAController@bbb');
@@ -21,7 +22,8 @@ Route::get('XXX', 'AAAController@bbb');
 //問4
 Route::get('admin/profile/create', 'Admin\ProfileController@add')->middleware('auth');
 Route::get('admin/profile/edit', 'Admin\ProfileController@edit')->middleware('auth');
-
+Route::post('admin/profile/create', 'Admin\ProfileController@create')->middleware('auth');
+Route::post('admin/profile/edit', 'Admin\ProfileController@update')->middleware('auth');
 
 Auth::routes();
 
