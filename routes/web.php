@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('news/create', 'Admin\NewsController@add');
-    Route::post('news/create', 'Admin\NewsController@create'); # 追記
+    Route::post('news/create', 'Admin\NewsController@create');
+    Route::get('news', 'Admin\NewsController@index')->middleware('auth');
 
 //問3
 Route::get('XXX', 'AAAController@bbb');
