@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('news/create', 'Admin\NewsController@add');
     Route::post('news/create', 'Admin\NewsController@create'); # 追記
-});
+
 //問3
 Route::get('XXX', 'AAAController@bbb');
 
@@ -28,5 +28,6 @@ Route::post('profile/edit', 'Admin\ProfileController@update')->middleware('auth'
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+});
 
 ?>
