@@ -15,30 +15,30 @@
                         </ul>
                     @endif
                     <div class="form-group row">
-                        <label class="col-md-2" for="title">氏名</label>
+                        <label class="col-md-2" for="name">氏名</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="name" value="{{ $profile_form->title }}">
+                            <input type="text" class="form-control" name="name" value="{{ $profile_form->name }}">
                         </div>
                     </div>
                     
                     <div class="form-group row">
-                        <label class="col-md-2" for="title">性別</label>
+                        <label class="col-md-2" for="gender">性別</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="gender" value="{{ $profile_form->title }}">
+                            <input type="text" class="form-control" name="gender" value="{{ $profile_form->gender }}">
                         </div>
                     </div>
                     
                     <div class="form-group row">
-                        <label class="col-md-2" for="title">趣味</label>
+                        <label class="col-md-2" for="hobby">趣味</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="hobby" value="{{ $profile_form->title }}">
+                            <input type="text" class="form-control" name="hobby" value="{{ $profile_form->hobby }}">
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-md-2" for="title">自己紹介</label>
+                        <label class="col-md-2" for="introduction">自己紹介</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="introduction" value="{{ $profile_form->title }}">
+                            <input type="text" class="form-control" name="introduction" value="{{ $profile_form->introduction }}">
                         </div>
                     </div>
 
@@ -53,6 +53,18 @@
                         </div>
                     </div>
                 </form>
+                <div class="row mt-5">
+                    <div class="col-md-4 mx-auto">
+                        <h2>編集履歴</h2>
+                        <ul class="list-group">
+                            @if ($profile_form->histories != NULL)
+                                @foreach ($profile_form->histories as $history)
+                                    <li class="list-group-item">{{ $history->edited_at }}</li>
+                                @endforeach
+                            @endif
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
