@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 use App\Profile;
 
+use App\History;
+
+use Carbon\Carbon;
+
 class ProfileController extends Controller
 {
     public function add()
@@ -33,6 +37,7 @@ public function create(Request $request)
 
     return redirect('admin/profile/create');
 }
+
  public function index(Request $request)
   {
       $cond_title = $request->cond_title;
@@ -43,6 +48,7 @@ public function create(Request $request)
       }
       return view('admin.profile.index', ['posts' => $posts, 'cond_title' => $cond_title]);
   }
+  
 
   // 以下を追記
 
@@ -69,6 +75,11 @@ public function create(Request $request)
 
       // 該当するデータを上書きして保存する
       $profile->fill($profile_form)->save();
+
+      $history = new History;
+      $history->profile_id = $profile->id;
+      $history->edited_at = Carbon::now();
+      $history->save();
 
       return redirect('admin/profile');
   }
